@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Header from '../Header';
+import Link from 'next/link';
+import Header from '../public/Header';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
