@@ -1,5 +1,7 @@
+import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Header from '../Header';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -15,6 +17,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <Header />
         <h1 className={styles.title}>Welcome to Burrito.me</h1>
 
         <p className={styles.description}>
