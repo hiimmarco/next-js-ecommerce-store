@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import Layout from '../Components/Layout';
-import Productcard from '../Components/Productcard';
+import Layout from '../../Components/Layout';
+import Productcard from '../../Components/Productcard';
 
 const wrapper = css`
   display: flex;

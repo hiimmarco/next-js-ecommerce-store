@@ -1,5 +1,6 @@
 const burritos = [
   {
+    id: '1',
     name: 'Ultimate Burrito',
     desc: 'This is the ultimate burrito.',
     price: 33,
@@ -17,6 +18,7 @@ const burritos = [
     },
   },
   {
+    id: '2',
     name: 'Beef Burrito',
     desc: 'This is an amazing beef burrito.',
     price: 23,
@@ -34,6 +36,7 @@ const burritos = [
     },
   },
   {
+    id: '3',
     name: 'Chicken Burrito',
     desc: 'This is an amazing chicken burrito.',
     price: 26,
@@ -51,6 +54,7 @@ const burritos = [
     },
   },
   {
+    id: '4',
     name: 'Bean Burrito',
     desc: 'This is an amazing vegetarian bean burrito.',
     price: 28,
@@ -68,6 +72,7 @@ const burritos = [
     },
   },
   {
+    id: '5',
     name: 'Vegan Burrito',
     desc: 'This is an amazing vegan burrito.',
     price: 28,
