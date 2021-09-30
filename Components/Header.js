@@ -1,9 +1,10 @@
 import { css } from '@emotion/react';
+import Image from 'next/image';
 import Link from 'next/link';
-import Headerlogo from './Logo';
+import Headerlogo from '../public/images/logo.png';
 
 const header = css`
-  background-color: #fef8f0;
+  background-color: black;
   height: 88px;
   width: 100vw;
   font-family: 'Inter' sans-seri;
@@ -15,7 +16,7 @@ const headercontent = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1280px;
+  max-width: 100%;
   height: 88px;
   padding: 24px 32px;
   font-size: 1rem;
@@ -26,6 +27,7 @@ const headercontent = css`
 
 const liststyle = css`
   list-style-type: none;
+  padding: 0;
 `;
 
 const button = css`
@@ -50,18 +52,33 @@ const button = css`
   }
 `;
 
+const navelement = css`
+  color: white;
+  margin: 0;
+  padding: 0;
+`;
+
+const headerlogo = css`
+  width: 180px;
+  padding-top: 6px;
+`;
+
 export default function Header() {
   return (
     <div css={header}>
       <div css={headercontent}>
-        <div>
-          <Headerlogo />
+        <div css={headerlogo}>
+          <Image
+            src={Headerlogo}
+            alt="This is the burrito logo"
+            css={headerlogo}
+          />
         </div>
         <nav>
           <ul css={liststyle}>
             <li>
               <Link href="/">
-                <a>Home</a>
+                <a css={navelement}>All products</a>
               </Link>
             </li>
           </ul>
