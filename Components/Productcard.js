@@ -16,17 +16,18 @@ const productcard = css`
 const image = css`
   border-radius: 5px;
 `;
-export default function Productcard() {
+export default function Productcard(props) {
   return (
     <div css={productcard}>
       <Image src={Burrito} alt="Picture of a burrito" css={image} />
-      <h3>Title</h3>
+      <h3>{props.name}</h3>
+      <p>{props.desc}</p>
       <ul>
         <li>List 1</li>
         <li>List 2</li>
         <li>List 3</li>
       </ul>
-      <p>Price</p>
+      <p>{props.price}</p>
     </div>
   );
 }

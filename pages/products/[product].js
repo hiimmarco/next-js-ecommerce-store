@@ -18,7 +18,7 @@ export default function Productdetail() {
     <div>
       <Layout>
         <Head>
-          <title>{product}</title>
+          <title>{product} - Burrito.me</title>
         </Head>
         <div css={wrapper}>
           <h1>Product Detail Page for {product}</h1>

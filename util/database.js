@@ -1,4 +1,6 @@
-const burritos = [
+import fs from 'node:fs';
+
+export const burritos = [
   {
     id: '1',
     name: 'Ultimate Burrito',
