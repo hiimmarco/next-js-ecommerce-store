@@ -1,10 +1,22 @@
 import { css } from '@emotion/react';
-import Link from 'next/link';
+
+const header = css`
+  background-color: black;
+  height: 88px;
+  width: 100vw;
+  font-family: 'Inter' sans-seri;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255, 0.5);
+`;
 
 export default function Footer() {
   return (
-    <footer>
-      <div>Hello this is footer</div>
-    </footer>
+    <div css={header}>
+      <footer>
+        <p>©Burrito Benito</p>
+      </footer>
+    </div>
   );
 }

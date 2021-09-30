@@ -7,7 +7,7 @@ import HeroImage from '../public/images/burritos-hero.jpg';
 
 const herocomponent = css`
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(${HeroImage});
+    url('/images/burritos-hero.jpg');
   background-size: cover;
   display: flex;
   justify-content: center;
