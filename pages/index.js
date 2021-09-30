@@ -1,9 +1,7 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '../Components/Layout';
-import HeroImage from '../public/images/burritos-hero.jpg';
 
 const herocomponent = css`
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
@@ -14,7 +12,7 @@ const herocomponent = css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 600px;
+  height: 100vh;
   padding: 0px 32px;
   color: white;
 `;
@@ -27,6 +25,29 @@ const herobutton = css`
   border: none;
   border-radius: 6px;
   cursor: pointer;
+`;
+
+const button = css`
+  display: flex;
+  justify-content: center;
+  color: rgb(184, 98, 0);
+  background-color: rgb(255, 226, 194);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  font-family: 'Inter' sans-serif;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+
+  :hover {
+    transform: scale(1.05) perspective(1px);
+    transition-duration: 100ms;
+    background-color: rgb(255, 207, 153);
+  }
 `;
 
 export default function Home() {
@@ -47,7 +68,7 @@ export default function Home() {
             <h1>Welcome to Burrito.me</h1>
 
             <p>Burritos are what happens when your food hugs itself.</p>
-            <button css={herobutton}>Shop all Burritos</button>
+            <button css={button}>Shop all Burritos</button>
           </div>
         </Layout>
       </main>

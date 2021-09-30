@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 const header = css`
   background-color: black;
   height: 88px;
-  width: 100vw;
+  width: 100%;
   font-family: 'Inter' sans-seri;
   display: flex;
   align-items: center;

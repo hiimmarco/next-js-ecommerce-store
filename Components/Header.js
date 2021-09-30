@@ -6,7 +6,7 @@ import Headerlogo from '../public/images/logo.png';
 const header = css`
   background-color: black;
   height: 88px;
-  width: 100vw;
+  width: 100%;
   font-family: 'Inter' sans-seri;
   align-items: center;
 `;
