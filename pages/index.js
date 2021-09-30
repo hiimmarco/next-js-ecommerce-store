@@ -68,7 +68,11 @@ export default function Home() {
             <h1>Welcome to Burrito.me</h1>
 
             <p>Burritos are what happens when your food hugs itself.</p>
-            <button css={button}>Shop all Burritos</button>
+            <Link href="/products">
+              <a>
+                <button css={button}>Shop all Burritos</button>
+              </a>
+            </Link>
           </div>
         </Layout>
       </main>

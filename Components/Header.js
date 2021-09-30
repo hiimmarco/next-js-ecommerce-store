@@ -68,21 +68,17 @@ export default function Header() {
     <div css={header}>
       <div css={headercontent}>
         <div css={headerlogo}>
-          <Image
-            src={Headerlogo}
-            alt="This is the burrito logo"
-            css={headerlogo}
-          />
+          <Link href="/">
+            <a>
+              <Image
+                src={Headerlogo}
+                alt="This is the burrito logo"
+                css={headerlogo}
+              />
+            </a>
+          </Link>
         </div>
-        <nav>
-          <ul css={liststyle}>
-            <li>
-              <Link href="/">
-                <a css={navelement}>All products</a>
-              </Link>
-            </li>
-          </ul>
-        </nav>
+
         <a href="https://www.google.at" className="buttonLink">
           <button css={button}>Shopping cart</button>
         </a>
