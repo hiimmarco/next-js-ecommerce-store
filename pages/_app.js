@@ -23,6 +23,9 @@ function MyApp({ Component, pageProps }) {
               sans-serif;
             margin: 0;
           }
+          a {
+            text-decoration: none;
+          }
         `}
       />
       <Component {...pageProps} />
