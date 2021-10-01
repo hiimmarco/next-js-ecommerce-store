@@ -5,7 +5,7 @@ import Productcard from '../../Components/Productcard';
 
 const wrapper = css`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin: 40px 0px;
@@ -19,20 +19,20 @@ export default function Products(props) {
           <title>Overview - Burrito.me</title>
         </Head>
         <div css={wrapper}>
-          <Productcard />
-          <ul>
+          <div>
             {props.burritos.map((burrito) => {
               return (
-                <li key={`id-list-${burrito.id}`}>
+                <div key={`id-list-${burrito.id}`}>
                   <Productcard
                     name={burrito.name}
                     desc={burrito.desc}
                     price={burrito.price}
+                    link={burrito.link}
                   />
-                </li>
+                </div>
               );
             })}
-          </ul>
+          </div>
         </div>
       </Layout>
     </div>
