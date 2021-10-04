@@ -1,16 +1,13 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import Layout from '../../Components/Layout';
-import Burrito from '../../public/images/burrito.jpeg';
 
 const wrapper = css`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 40px 0px;
 `;
 
 const image = css`
@@ -29,13 +26,19 @@ export default function Productdetail(props) {
     <div>
       <Layout>
         <Head>
-          <title> - Burrito.me</title>
+          <title>{props.singleBurrito.name} - Burrito.me</title>
         </Head>
         <div css={wrapper}>
-          <Image src={Burrito} alt="Picture of a burrito" css={image} />
+          <Image
+            src={props.singleBurrito.img}
+            alt="Picture of a burrito"
+            css={image}
+            width={900}
+            height={600}
+          />
 
           <h1>Product Detail Page for {props.singleBurrito.name} </h1>
-          <p>Hallo test. </p>
+          <p>{props.singleBurrito.desc}</p>
           <div css={buttons}>
             <button>-</button>
             <p>1</p>
