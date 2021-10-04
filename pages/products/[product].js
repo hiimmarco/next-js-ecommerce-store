@@ -34,7 +34,7 @@ export default function Productdetail(props) {
         <div css={wrapper}>
           <Image src={Burrito} alt="Picture of a burrito" css={image} />
 
-          <h1>Product Detail Page for {props.name} </h1>
+          <h1>Product Detail Page for {props.singleBurrito.name} </h1>
           <p>Hallo test. </p>
           <div css={buttons}>
             <button>-</button>
