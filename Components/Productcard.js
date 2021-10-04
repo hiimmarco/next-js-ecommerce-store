@@ -21,7 +21,7 @@ const image = css`
 export default function Productcard(props) {
   return (
     <div css={productcard}>
-      <Link href={props.link}>
+      <Link href={`/products/${props.link}`}>
         <a>
           <Image
             src={props.img}

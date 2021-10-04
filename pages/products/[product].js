@@ -23,18 +23,18 @@ const buttons = css`
 `;
 
 export default function Productdetail(props) {
-  const router = useRouter();
-  const { product } = router.query;
+  /*   const router = useRouter();
+  const { product } = router.query; */
   return (
     <div>
       <Layout>
         <Head>
-          <title>{product} - Burrito.me</title>
+          <title> - Burrito.me</title>
         </Head>
         <div css={wrapper}>
           <Image src={Burrito} alt="Picture of a burrito" css={image} />
 
-          <h1>Product Detail Page for {product}</h1>
+          <h1>Product Detail Page for </h1>
           <p>Hallo test. </p>
           <div css={buttons}>
             <button>-</button>
@@ -47,11 +47,14 @@ export default function Productdetail(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const { burritos } = await import('../../util/database');
+
+  console.log(context.query.id);
+
   return {
     props: {
-      burritos: burritos,
+      burritos,
     },
   };
 }

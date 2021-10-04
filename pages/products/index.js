@@ -30,7 +30,7 @@ export default function Products(props) {
                   img={burrito.img}
                   desc={burrito.desc}
                   price={burrito.price}
-                  link={burrito.link}
+                  link={burrito.id}
                 />
               </div>
             );

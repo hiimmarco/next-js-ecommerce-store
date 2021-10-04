@@ -1,8 +1,8 @@
 export const burritos = [
   {
-    id: '1',
+    id: 1,
     name: 'Ultimate Burrito',
-    link: 'products/ultimate-burrito',
+    link: 'ultimate-burrito',
     desc: 'This is the ultimate burrito.',
     price: '33,95',
     img: '/images/ultimate-burrito.jpeg',
@@ -19,9 +19,9 @@ export const burritos = [
     },
   },
   {
-    id: '2',
+    id: 2,
     name: 'Beef Burrito',
-    link: 'products/beef-burrito',
+    link: 'beef-burrito',
     desc: 'This is an amazing beef burrito.',
     price: '23,00',
     img: '/images/beef-burrito.jpeg',
@@ -38,9 +38,9 @@ export const burritos = [
     },
   },
   {
-    id: '3',
+    id: 3,
     name: 'Chicken Burrito',
-    link: 'products/chicken-burrito',
+    link: 'chicken-burrito',
     desc: 'This is an amazing chicken burrito.',
     price: '26,95',
     img: '/images/chicken-burrito.jpeg',
@@ -57,9 +57,9 @@ export const burritos = [
     },
   },
   {
-    id: '4',
+    id: 4,
     name: 'Bean Burrito',
-    link: 'products/bean-burrito',
+    link: 'bean-burrito',
     desc: 'This is an amazing vegetarian bean burrito.',
     price: '28,90',
     img: '/images/bean-burrito.jpeg',
@@ -78,7 +78,7 @@ export const burritos = [
   {
     id: '5',
     name: 'Vegan Burrito',
-    link: 'products/vegan-burrito',
+    link: 'vegan-burrito',
     desc: 'This is an amazing vegan burrito.',
     price: '19,90',
     img: '/images/vegan-burrito.jpeg',
