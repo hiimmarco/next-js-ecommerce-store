@@ -34,7 +34,7 @@ export default function Productdetail(props) {
         <div css={wrapper}>
           <Image src={Burrito} alt="Picture of a burrito" css={image} />
 
-          <h1>Product Detail Page for </h1>
+          <h1>Product Detail Page for {props.name} </h1>
           <p>Hallo test. </p>
           <div css={buttons}>
             <button>-</button>
@@ -50,11 +50,15 @@ export default function Productdetail(props) {
 export async function getServerSideProps(context) {
   const { burritos } = await import('../../util/database');
 
-  console.log(context.query.id);
+  const idFromUrl = context.query.product;
 
+  const singleBurrito = burritos.find((burrito) => {
+    return idFromUrl === burrito.id;
+  });
+  console.log(singleBurrito);
   return {
     props: {
-      burritos,
+      singleBurrito,
     },
   };
 }

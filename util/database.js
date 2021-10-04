@@ -1,6 +1,6 @@
 export const burritos = [
   {
-    id: 1,
+    id: '1',
     name: 'Ultimate Burrito',
     link: 'ultimate-burrito',
     desc: 'This is the ultimate burrito.',
@@ -19,7 +19,7 @@ export const burritos = [
     },
   },
   {
-    id: 2,
+    id: '2',
     name: 'Beef Burrito',
     link: 'beef-burrito',
     desc: 'This is an amazing beef burrito.',
@@ -38,7 +38,7 @@ export const burritos = [
     },
   },
   {
-    id: 3,
+    id: '3',
     name: 'Chicken Burrito',
     link: 'chicken-burrito',
     desc: 'This is an amazing chicken burrito.',
@@ -57,7 +57,7 @@ export const burritos = [
     },
   },
   {
-    id: 4,
+    id: '4',
     name: 'Bean Burrito',
     link: 'bean-burrito',
     desc: 'This is an amazing vegetarian bean burrito.',
