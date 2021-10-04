@@ -9,6 +9,8 @@ const wrapper = css`
   justify-content: center;
   align-items: center;
   margin: 40px 0px;
+
+  flex-wrap: wrap;
 `;
 
 export default function Products(props) {
@@ -18,21 +20,21 @@ export default function Products(props) {
         <Head>
           <title>Overview - Burrito.me</title>
         </Head>
+
         <div css={wrapper}>
-          <div>
-            {props.burritos.map((burrito) => {
-              return (
-                <div key={`id-list-${burrito.id}`}>
-                  <Productcard
-                    name={burrito.name}
-                    desc={burrito.desc}
-                    price={burrito.price}
-                    link={burrito.link}
-                  />
-                </div>
-              );
-            })}
-          </div>
+          {props.burritos.map((burrito) => {
+            return (
+              <div key={`id-list-${burrito.id}`}>
+                <Productcard
+                  name={burrito.name}
+                  img={burrito.img}
+                  desc={burrito.desc}
+                  price={burrito.price}
+                  link={burrito.link}
+                />
+              </div>
+            );
+          })}
         </div>
       </Layout>
     </div>

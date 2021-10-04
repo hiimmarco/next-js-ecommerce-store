@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Burrito from '../public/images/burrito.jpeg';
 
 const productcard = css`
   display: flex;
@@ -12,10 +11,8 @@ const productcard = css`
   width: 350px;
   padding: 8px;
   border-radius: 5px;
-`;
-
-const buttons = css`
-  display: flex;
+  margin-right: 20px;
+  margin-bottom: 20px;
 `;
 
 const image = css`
@@ -26,22 +23,19 @@ export default function Productcard(props) {
     <div css={productcard}>
       <Link href={props.link}>
         <a>
-          <Image src={Burrito} alt="Picture of a burrito" css={image} />
+          <Image
+            src={props.img}
+            alt="Picture of a burrito"
+            css={image}
+            width="332"
+            height="249"
+          />
           <h3>{props.name}</h3>
         </a>
       </Link>
       <p>{props.desc}</p>
-      <ul>
-        <li>List 1</li>
-        <li>List 2</li>
-        <li>List 3</li>
-      </ul>
-      <p>{props.price}</p>
-      <div css={buttons}>
-        <button>-</button>
-        <p>1</p>
-        <button>+</button>
-      </div>
+
+      <p>€ {props.price}</p>
     </div>
   );
 }

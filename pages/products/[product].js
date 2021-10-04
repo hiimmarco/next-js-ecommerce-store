@@ -18,6 +18,10 @@ const image = css`
   height: auto;
 `;
 
+const buttons = css`
+  display: flex;
+`;
+
 export default function Productdetail(props) {
   const router = useRouter();
   const { product } = router.query;
@@ -32,6 +36,11 @@ export default function Productdetail(props) {
 
           <h1>Product Detail Page for {product}</h1>
           <p>Hallo test. </p>
+          <div css={buttons}>
+            <button>-</button>
+            <p>1</p>
+            <button>+</button>
+          </div>
         </div>
       </Layout>
     </div>
