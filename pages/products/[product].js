@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import Layout from '../../Components/Layout';
+import { burritos } from '../../util/database';
 
 const wrapper = css`
   display: flex;
@@ -29,6 +30,7 @@ const infos = css`
 
 export default function Productdetail(props) {
   const [quantity, setQuantity] = useState(1);
+  // Functions for setting the count
   const addCountHandler = () => {
     setQuantity(quantity + 1);
   };
@@ -38,17 +40,20 @@ export default function Productdetail(props) {
     }
     setQuantity(quantity - 1);
   };
-  // Return page elements
-
-  const addToCart = () => {
-    const desiredProduct = [
+  // Set cookie with desired burrito and amount
+  function addToCookie() {
+    const selectedBurrito = [
       {
         name: props.singleBurrito.name,
         price: props.singleBurrito.price,
         amount: quantity,
       },
     ];
-  };
+    console.log(selectedBurrito);
+
+    // Insert set cookie here !!!!!!!!!!!
+  }
+  // Return page elements
   return (
     <div>
       <Layout>
@@ -72,7 +77,7 @@ export default function Productdetail(props) {
             <button onClick={removeCountHandler}>-</button>
             <p>{quantity}</p>
             <button onClick={addCountHandler}>+</button>
-            <button onClick={addToCart}>Add to cart</button>
+            <button onClick={addToCookie}>Add to cart</button>
           </div>
         </div>
       </Layout>
@@ -89,6 +94,7 @@ export async function getServerSideProps(context) {
   const singleBurrito = burritos.find((burrito) => {
     return idFromUrl === burrito.id;
   });
+
   // console.log(singleBurrito);
   console.log(context.req.cookies);
   return {
