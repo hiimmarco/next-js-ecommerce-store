@@ -7,7 +7,7 @@ const main = css`
   flex-direction: column;
 `;
 
-export default function Home() {
+export default function Cart() {
   return (
     <div>
       <Head>

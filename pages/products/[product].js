@@ -16,6 +16,10 @@ const image = css`
   height: auto;
 `;
 
+const buttons = css`
+  display: flex;
+`;
+
 const infos = css`
   display: flex;
   flex-direction: column;
@@ -23,28 +27,28 @@ const infos = css`
   align-items: center;
 `;
 
-const buttons = css`
-  display: flex;
-`;
-
 export default function Productdetail(props) {
-  // This is for getting the query from the URL in the frontnend
-  /*   const router = useRouter();
-  const { product } = router.query; */
-
-  // Set count function with restricting to go under 1 item
-  const [count, setCount] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const addCountHandler = () => {
-    setCount(count + 1);
+    setQuantity(quantity + 1);
   };
   const removeCountHandler = () => {
-    if (count === 1) {
+    if (quantity === 1) {
       return;
     }
-    setCount(count - 1);
+    setQuantity(quantity - 1);
   };
-
   // Return page elements
+
+  const addToCart = () => {
+    const desiredProduct = [
+      {
+        name: props.singleBurrito.name,
+        price: props.singleBurrito.price,
+        amount: quantity,
+      },
+    ];
+  };
   return (
     <div>
       <Layout>
@@ -63,12 +67,12 @@ export default function Productdetail(props) {
             <h1>{props.singleBurrito.name} </h1>
             <p>{props.singleBurrito.desc}</p>
             <p>€ {props.singleBurrito.price}</p>
-            <div css={buttons}>
-              <button onClick={removeCountHandler}>-</button>
-              <p>{count}</p>
-              <button onClick={addCountHandler}>+</button>
-              <button>Add to cart</button>
-            </div>
+          </div>
+          <div css={buttons}>
+            <button onClick={removeCountHandler}>-</button>
+            <p>{quantity}</p>
+            <button onClick={addCountHandler}>+</button>
+            <button onClick={addToCart}>Add to cart</button>
           </div>
         </div>
       </Layout>
@@ -85,7 +89,8 @@ export async function getServerSideProps(context) {
   const singleBurrito = burritos.find((burrito) => {
     return idFromUrl === burrito.id;
   });
-  console.log(singleBurrito);
+  // console.log(singleBurrito);
+  console.log(context.req.cookies);
   return {
     props: {
       singleBurrito,
