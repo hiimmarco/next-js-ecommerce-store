@@ -25,8 +25,19 @@ export default function Productdetail(props) {
   /*   const router = useRouter();
   const { product } = router.query; */
 
-  const [count, setCount] = useState(0);
+  // Set count function with restricting to go under 1 item
+  const [count, setCount] = useState(1);
+  const addCountHandler = () => {
+    setCount(count + 1);
+  };
+  const removeCountHandler = () => {
+    if (count === 1) {
+      return;
+    }
+    setCount(count - 1);
+  };
 
+  // Return page elements
   return (
     <div>
       <Layout>
@@ -38,28 +49,16 @@ export default function Productdetail(props) {
             src={props.singleBurrito.img}
             alt="Picture of a burrito"
             css={image}
-            width={900}
-            height={600}
+            width={800}
+            height={500}
           />
 
           <h1>{props.singleBurrito.name} </h1>
           <p>{props.singleBurrito.desc}</p>
           <div css={buttons}>
-            <button
-              onClick={() => {
-                setCount(count - 1);
-              }}
-            >
-              -
-            </button>
+            <button onClick={removeCountHandler}>-</button>
             <p>{count}</p>
-            <button
-              onClick={() => {
-                setCount(count + 1);
-              }}
-            >
-              +
-            </button>
+            <button onClick={addCountHandler}>+</button>
             <button>Add to cart</button>
           </div>
         </div>
