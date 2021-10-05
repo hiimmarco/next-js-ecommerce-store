@@ -18,6 +18,11 @@ const productcard = css`
 const image = css`
   border-radius: 5px;
 `;
+
+const detailbutton = css`
+  cursor: pointer; ;
+`;
+
 export default function Productcard(props) {
   return (
     <div css={productcard}>
@@ -31,11 +36,13 @@ export default function Productcard(props) {
             height="249"
           />
           <h3>{props.name}</h3>
+
+          <p>{props.desc}</p>
+
+          <p>€ {props.price}</p>
+          <button css={detailbutton}>Go to product page</button>
         </a>
       </Link>
-      <p>{props.desc}</p>
-
-      <p>€ {props.price}</p>
     </div>
   );
 }

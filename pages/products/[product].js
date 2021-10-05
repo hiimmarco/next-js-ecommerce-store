@@ -6,7 +6,7 @@ import Layout from '../../Components/Layout';
 
 const wrapper = css`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
@@ -14,6 +14,13 @@ const wrapper = css`
 const image = css`
   width: 500px;
   height: auto;
+`;
+
+const infos = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const buttons = css`
@@ -52,14 +59,16 @@ export default function Productdetail(props) {
             width={800}
             height={500}
           />
-
-          <h1>{props.singleBurrito.name} </h1>
-          <p>{props.singleBurrito.desc}</p>
-          <div css={buttons}>
-            <button onClick={removeCountHandler}>-</button>
-            <p>{count}</p>
-            <button onClick={addCountHandler}>+</button>
-            <button>Add to cart</button>
+          <div css={infos}>
+            <h1>{props.singleBurrito.name} </h1>
+            <p>{props.singleBurrito.desc}</p>
+            <p>€ {props.singleBurrito.price}</p>
+            <div css={buttons}>
+              <button onClick={removeCountHandler}>-</button>
+              <p>{count}</p>
+              <button onClick={addCountHandler}>+</button>
+              <button>Add to cart</button>
+            </div>
           </div>
         </div>
       </Layout>
