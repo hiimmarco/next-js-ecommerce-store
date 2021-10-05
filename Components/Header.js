@@ -25,11 +25,6 @@ const headercontent = css`
   color: rgb(55, 65, 81);
 `;
 
-const liststyle = css`
-  list-style-type: none;
-  padding: 0;
-`;
-
 const button = css`
   display: flex;
   justify-content: center;
@@ -50,12 +45,6 @@ const button = css`
     transition-duration: 100ms;
     background-color: rgb(255, 207, 153);
   }
-`;
-
-const navelement = css`
-  color: white;
-  margin: 0;
-  padding: 0;
 `;
 
 const headerlogo = css`

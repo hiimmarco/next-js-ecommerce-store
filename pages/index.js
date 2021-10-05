@@ -17,16 +17,6 @@ const herocomponent = css`
   color: white;
 `;
 
-const herobutton = css`
-  height: 48px;
-  width: 16%;
-  text-transform: uppercase;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-`;
-
 const button = css`
   display: flex;
   justify-content: center;
