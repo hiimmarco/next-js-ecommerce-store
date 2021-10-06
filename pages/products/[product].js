@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import Layout from '../../Components/Layout';
-import { burritos } from '../../util/database';
 
 const wrapper = css`
   display: flex;
@@ -46,11 +45,12 @@ export default function Productdetail(props) {
       {
         name: props.singleBurrito.name,
         price: props.singleBurrito.price,
+        id: props.singleBurrito.id,
+        img: props.singleBurrito.img,
         amount: quantity,
       },
     ];
     console.log(selectedBurrito);
-
     // Insert set cookie here !!!!!!!!!!!
   }
   // Return page elements
@@ -95,8 +95,6 @@ export async function getServerSideProps(context) {
     return idFromUrl === burrito.id;
   });
 
-  // console.log(singleBurrito);
-  console.log(context.req.cookies);
   return {
     props: {
       singleBurrito,
