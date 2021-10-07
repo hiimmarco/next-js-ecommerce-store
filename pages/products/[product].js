@@ -56,7 +56,6 @@ export default function Productdetail(props) {
 
   function clickHandler() {
     let currentCookie = getParsedCookie('currentCookie');
-    console.log(currentCookie);
 
     // Check if cookie even exists and create one if not
 
@@ -77,20 +76,22 @@ export default function Productdetail(props) {
     } else {
       // Check if the desired product is already inside the cookie
 
-      const isBurritoInCart = currentCookie.some((id) => {
-        return id === Number(props.singleBurrito.id);
+      const isBurritoInCart = currentCookie.some((burritos) => {
+        return Number(burritos.id) === Number(props.singleBurrito.id);
       });
+      console.log(isBurritoInCart);
       // If the product is there, remove it first and add it again with new amount
       let newCookie;
+
       if (isBurritoInCart) {
         // Remove the product
-        newCookie = currentCookie.filter((id) => {
-          return id !== Number(props.singleBurrito.id);
+        console.log('This if runs.');
+        newCookie = currentCookie.filter((burritos) => {
+          return Number(burritos.id) !== Number(props.singleBurrito.id);
         });
-        console.log(newCookie);
-
         // Add the product again with new amount
-        currentCookie.push([
+        newCookie = [
+          ...newCookie,
           {
             name: props.singleBurrito.name,
             desc: props.singleBurrito.desc,
@@ -99,7 +100,7 @@ export default function Productdetail(props) {
             img: props.singleBurrito.img,
             amount: quantity,
           },
-        ]);
+        ];
       } else {
         newCookie = [
           ...currentCookie,
@@ -115,6 +116,7 @@ export default function Productdetail(props) {
       }
       setParsedCookie('currentCookie', newCookie);
       setCookie(newCookie);
+      console.log(newCookie);
     }
   }
 
