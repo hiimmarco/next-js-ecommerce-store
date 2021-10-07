@@ -4,6 +4,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import Layout from '../../Components/Layout';
+import { getParsedCookie } from '../../util/cookies';
+
+// Create styles for component
 
 const wrapper = css`
   display: flex;
@@ -28,9 +31,13 @@ const infos = css`
   align-items: center;
 `;
 
+// Create function component
+
 export default function Productdetail(props) {
   const [quantity, setQuantity] = useState(1);
-  // Functions for setting the count
+
+  // Functions for in- or decreasing the quantitiy of the product
+
   const addCountHandler = () => {
     setQuantity(quantity + 1);
   };
@@ -40,22 +47,45 @@ export default function Productdetail(props) {
     }
     setQuantity(quantity - 1);
   };
-  // Set cookie with desired burrito and amount
-  function addToCookie() {
-    const selectedBurrito = [
-      {
-        name: props.singleBurrito.name,
-        price: props.singleBurrito.price,
-        id: props.singleBurrito.id,
-        img: props.singleBurrito.img,
-        amount: quantity,
-      },
-    ];
-    console.log(selectedBurrito);
-    console.log(Cookies.get('name'));
-    // Insert set cookie here !!!!!!!!!!!
+
+  /* Set cookie with desired burrito and amount; 3 main steps:
+   1. Check current state of cookie
+   2. Create or update cookie (or remove content if something is there)
+   3. Update state */
+
+  function clickHandler() {
+    let cartCookie = getParsedCookie('cartCookie');
+
+    if (typeof cartCookie === 'undefined') {
+      cartCookie = [
+        {
+          name: props.singleBurrito.name,
+          price: props.singleBurrito.price,
+          id: props.singleBurrito.id,
+          img: props.singleBurrito.img,
+          amount: quantity,
+        },
+      ];
+    } else {
+      cartCookie.push([
+        {
+          name: props.singleBurrito.name,
+          desc: props.singleBurrito.desc,
+          price: props.singleBurrito.price,
+          id: props.singleBurrito.id,
+          img: props.singleBurrito.img,
+          amount: quantity,
+        },
+      ]);
+    }
+
+    Cookies.set('cartCookie', JSON.stringify(cartCookie));
+
+    console.log(cartCookie);
   }
-  // Return page elements
+
+  // Render page elements
+
   return (
     <div>
       <Layout>
@@ -79,7 +109,7 @@ export default function Productdetail(props) {
             <button onClick={removeCountHandler}>-</button>
             <p>{quantity}</p>
             <button onClick={addCountHandler}>+</button>
-            <button onClick={addToCookie}>Add to cart</button>
+            <button onClick={clickHandler}>Add to cart</button>
           </div>
         </div>
       </Layout>
@@ -87,7 +117,8 @@ export default function Productdetail(props) {
   );
 }
 
-// Get data from database and reduce to one object (by finding the unique ID of the object via the URL)
+// Get data from database and reduce to one object (by finding the unique ID provided in the link/URL)
+
 export async function getServerSideProps(context) {
   const { burritos } = await import('../../util/database');
 
