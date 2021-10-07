@@ -10,6 +10,6 @@ export function getParsedCookie(key) {
 
 export function setParsedCookie(key, value) {
   if (typeof window !== 'undefined') {
-    Cookies.set(key, JSON.stringify(key, value));
+    Cookies.set(key, JSON.stringify(value));
   }
 }
