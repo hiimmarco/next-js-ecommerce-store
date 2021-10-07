@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Cookies from 'js-cookie';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -51,6 +52,7 @@ export default function Productdetail(props) {
       },
     ];
     console.log(selectedBurrito);
+    console.log(Cookies.get('name'));
     // Insert set cookie here !!!!!!!!!!!
   }
   // Return page elements
