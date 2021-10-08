@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import Layout from '../../Components/Layout';
-import { getParsedCookie } from '../../util/cookies';
+import { getParsedCookie, setParsedCookie } from '../../util/cookies';
 
 // Create styles for component
 
@@ -35,6 +35,7 @@ const infos = css`
 
 export default function Productdetail(props) {
   const [quantity, setQuantity] = useState(1);
+  const [cookie, setCookie] = useState(getParsedCookie('currentCookie'));
 
   // Functions for in- or decreasing the quantitiy of the product
 
@@ -54,10 +55,12 @@ export default function Productdetail(props) {
    3. Update state */
 
   function clickHandler() {
-    let cartCookie = getParsedCookie('cartCookie');
+    let currentCookie = getParsedCookie('currentCookie');
 
-    if (typeof cartCookie === 'undefined') {
-      cartCookie = [
+    // Check if cookie even exists and create one if not
+
+    if (typeof currentCookie === 'undefined') {
+      currentCookie = [
         {
           name: props.singleBurrito.name,
           price: props.singleBurrito.price,
@@ -66,22 +69,55 @@ export default function Productdetail(props) {
           amount: quantity,
         },
       ];
+
+      Cookies.set('currentCookie', JSON.stringify(currentCookie));
+
+      // Update the existing cookie
     } else {
-      cartCookie.push([
-        {
-          name: props.singleBurrito.name,
-          desc: props.singleBurrito.desc,
-          price: props.singleBurrito.price,
-          id: props.singleBurrito.id,
-          img: props.singleBurrito.img,
-          amount: quantity,
-        },
-      ]);
+      // Check if the desired product is already inside the cookie
+
+      const isBurritoInCart = currentCookie.some((burritos) => {
+        return Number(burritos.id) === Number(props.singleBurrito.id);
+      });
+      console.log(isBurritoInCart);
+      // If the product is there, remove it first and add it again with new amount
+      let newCookie;
+
+      if (isBurritoInCart) {
+        // Remove the product
+        console.log('This if runs.');
+        newCookie = currentCookie.filter((burritos) => {
+          return Number(burritos.id) !== Number(props.singleBurrito.id);
+        });
+        // Add the product again with new amount
+        newCookie = [
+          ...newCookie,
+          {
+            name: props.singleBurrito.name,
+            desc: props.singleBurrito.desc,
+            price: props.singleBurrito.price,
+            id: props.singleBurrito.id,
+            img: props.singleBurrito.img,
+            amount: quantity,
+          },
+        ];
+      } else {
+        newCookie = [
+          ...currentCookie,
+          {
+            name: props.singleBurrito.name,
+            desc: props.singleBurrito.desc,
+            price: props.singleBurrito.price,
+            id: props.singleBurrito.id,
+            img: props.singleBurrito.img,
+            amount: quantity,
+          },
+        ];
+      }
+      setParsedCookie('currentCookie', newCookie);
+      setCookie(newCookie);
+      console.log(newCookie);
     }
-
-    Cookies.set('cartCookie', JSON.stringify(cartCookie));
-
-    console.log(cartCookie);
   }
 
   // Render page elements
