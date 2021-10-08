@@ -40,17 +40,19 @@ export default function Cart() {
   /*
   const deleteProductFromCookie = () => {
     const isBurritoInCart = cookie.some((burritos) => {
-      return Number(burritos.id) === Number(props.singleBurrito.id);
+      return Number(burritos.id) === Number(burrito.id);
     });
     console.log(isBurritoInCart);
     // If the product is there, remove it
     let newCookie = cookie.filter((burritos) => {
-      return Number(burritos.id) !== Number(props.singleBurrito.id);
+      return Number(burritos.id) !== Number(burrito.id);
       console.log(newCookie);
     });
   };
 */
+
   // Render two different states depending on the cooking being already there
+
   if (cookie === '[]') {
     return (
       <Layout>
