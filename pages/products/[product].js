@@ -94,7 +94,6 @@ export default function Productdetail(props) {
           ...newCookie,
           {
             name: props.singleBurrito.name,
-            desc: props.singleBurrito.desc,
             price: props.singleBurrito.price,
             id: props.singleBurrito.id,
             img: props.singleBurrito.img,
@@ -106,7 +105,6 @@ export default function Productdetail(props) {
           ...currentCookie,
           {
             name: props.singleBurrito.name,
-            desc: props.singleBurrito.desc,
             price: props.singleBurrito.price,
             id: props.singleBurrito.id,
             img: props.singleBurrito.img,

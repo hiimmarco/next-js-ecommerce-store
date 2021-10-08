@@ -11,6 +11,15 @@ const main = css`
   flex-direction: column;
 `;
 
+const buttons = css`
+  display: flex;
+`;
+
+const image = css`
+  width: 500px;
+  height: auto;
+`;
+
 const productcard = css`
   display: flex;
   flex-direction: column;
@@ -27,6 +36,20 @@ export default function Cart() {
     getParsedCookie('currentCookie') || '[]',
   );
 
+  // Write function for deleting product from the cookie
+  /*
+  const deleteProductFromCookie = () => {
+    const isBurritoInCart = cookie.some((burritos) => {
+      return Number(burritos.id) === Number(props.singleBurrito.id);
+    });
+    console.log(isBurritoInCart);
+    // If the product is there, remove it
+    let newCookie = cookie.filter((burritos) => {
+      return Number(burritos.id) !== Number(props.singleBurrito.id);
+      console.log(newCookie);
+    });
+  };
+*/
   // Render two different states depending on the cooking being already there
   if (cookie === '[]') {
     return (
@@ -52,9 +75,16 @@ export default function Cart() {
             {cookie.map((burrito) => {
               return (
                 <div key={burrito.id} css={productcard}>
+                  <img src={burrito.img} alt="Burrito" css={image} />
                   <h3>{burrito.name}</h3>
-                  <p>{burrito.price}</p>
-                  <p>{burrito.amount}</p>
+                  <p>€ {burrito.price}</p>
+                  <div css={buttons}>
+                    <p>Quantity: </p>
+                    <button>-</button>
+                    <p>{burrito.amount}</p>
+                    <button>+</button>
+                    <button>Delete</button>
+                  </div>
                 </div>
               );
             })}
