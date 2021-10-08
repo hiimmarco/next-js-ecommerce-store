@@ -67,10 +67,11 @@ export default function Header() {
             </a>
           </Link>
         </div>
-
-        <a href="https://www.google.at" className="buttonLink">
-          <button css={button}>Shopping cart</button>
-        </a>
+        <Link href="/cart">
+          <a>
+            <button css={button}>Shopping cart</button>
+          </a>
+        </Link>
       </div>
     </div>
   );
