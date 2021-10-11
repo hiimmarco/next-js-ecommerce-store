@@ -124,6 +124,7 @@ export default function Cart() {
                 <p>
                   Total costs: <span>€ 345</span>
                 </p>
+                <button>checkout</button>
               </div>
             </div>
           </Layout>
