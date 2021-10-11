@@ -25,6 +25,7 @@ const maincontent = css`
 const image = css`
   width: 250px;
   height: auto;
+  margin-right: 20px;
 `;
 
 const productcard = css`
@@ -40,6 +41,13 @@ const productcard = css`
 const innercard = css`
   display: flex;
   flex-direction: column;
+`;
+
+const summary = css`
+  display: block;
+  background-color: lightgrey;
+  width: 400px;
+  padding-left: 20px;
 `;
 
 // Create functional component
@@ -105,6 +113,18 @@ export default function Cart() {
                   </div>
                 );
               })}
+              <div css={summary}>
+                <h2>Order summary</h2>
+                <p>
+                  Burritos: <span>€1234</span>
+                </p>
+                <p>
+                  Shipping: <sp>8€</sp>
+                </p>
+                <p>
+                  Total costs: <span>€ 345</span>
+                </p>
+              </div>
             </div>
           </Layout>
         </main>
