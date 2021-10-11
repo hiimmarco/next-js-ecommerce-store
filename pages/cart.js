@@ -15,18 +15,31 @@ const buttons = css`
   display: flex;
 `;
 
+const maincontent = css`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
 const image = css`
-  width: 500px;
+  width: 250px;
   height: auto;
 `;
 
 const productcard = css`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border: none;
   margin: 20px;
+  width: 500px;
+`;
+
+const innercard = css`
+  display: flex;
+  flex-direction: column;
 `;
 
 // Create functional component
@@ -72,24 +85,27 @@ export default function Cart() {
         </Head>
         <main css={main}>
           <Layout>
-            <h1>Your shopping cart</h1>
-            <div>Here are your products.</div>
-            {cookie.map((burrito) => {
-              return (
-                <div key={burrito.id} css={productcard}>
-                  <img src={burrito.img} alt="Burrito" css={image} />
-                  <h3>{burrito.name}</h3>
-                  <p>€ {burrito.price}</p>
-                  <div css={buttons}>
-                    <p>Quantity: </p>
-                    <button>-</button>
-                    <p>{burrito.amount}</p>
-                    <button>+</button>
-                    <button>Delete</button>
+            <h1>Shopping cart</h1>
+            <div css={maincontent}>
+              {cookie.map((burrito) => {
+                return (
+                  <div key={burrito.id} css={productcard}>
+                    <img src={burrito.img} alt="Burrito" css={image} />
+                    <div css={innercard}>
+                      <h3>{burrito.name}</h3>
+                      <p>€ {burrito.price}</p>
+                      <div css={buttons}>
+                        <p>Quantity: </p>
+                        <button>-</button>
+                        <p>{burrito.amount}</p>
+                        <button>+</button>
+                        <button>Delete</button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </Layout>
         </main>
       </div>
