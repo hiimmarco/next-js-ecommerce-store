@@ -92,6 +92,18 @@ export default function Cart() {
     console.log(currentCookie);
   }
 
+  // Create function for total price of burritos
+
+  function totalBurritoPrice(arr) {
+    return arr.reduce((acc, tour) => {
+      return acc + parseFloat(tour.price) * tour.amount;
+    }, 0);
+  }
+
+  function totalPrice() {
+    return totalBurritoPrice(cookie) + 8;
+  }
+
   // Render two different states depending on the cooking being already there
 
   if (cookie === '[]') {
@@ -154,13 +166,13 @@ export default function Cart() {
               <div css={summary}>
                 <h2>Order summary</h2>
                 <p>
-                  Burritos: <span>€1234</span>
+                  Burritos: <span>{totalBurritoPrice(cookie)}</span>
                 </p>
                 <p>
                   Shipping: <sp>8€</sp>
                 </p>
                 <p>
-                  Total costs: <span>€ 345</span>
+                  Total costs: <span>{totalPrice()}</span>
                 </p>
                 <button>checkout</button>
               </div>
