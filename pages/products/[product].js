@@ -144,7 +144,13 @@ export default function Productdetail(props) {
             <button onClick={removeCountHandler}>-</button>
             <p>{quantity}</p>
             <button onClick={addCountHandler}>+</button>
-            <button onClick={addToCart}>Add to cart</button>
+            <button
+              onClick={() => {
+                addToCart();
+              }}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </Layout>

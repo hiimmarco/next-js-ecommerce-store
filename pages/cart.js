@@ -57,20 +57,40 @@ export default function Cart() {
     getParsedCookie('currentCookie') || '[]',
   );
 
-  // Write function for deleting product from the cookie
-  /*
-  const deleteProductFromCookie = () => {
-    const isBurritoInCart = cookie.some((burritos) => {
-      return Number(burritos.id) === Number(burrito.id);
+  // Write function for deleting product from the cart (& cookie)
+
+  function deleteProductFromCookie(id) {
+    const newCookie = cookie.filter((burritos) => {
+      return Number(burritos.id) !== Number(id);
     });
-    console.log(isBurritoInCart);
-    // If the product is there, remove it
-    let newCookie = cookie.filter((burritos) => {
-      return Number(burritos.id) !== Number(burrito.id);
-      console.log(newCookie);
+    setParsedCookie('currentCookie', newCookie);
+    setCookie(newCookie);
+    console.log(newCookie);
+  }
+
+  // Write functions for changing the amount/quantity of the products in the cart (&cookie)
+
+  function incrementQuantity(id) {
+    const currentCookie = getParsedCookie('currentCookie');
+    const newCookie = currentCookie.find((burritos) => {
+      return burritos.id === id;
     });
-  };
-*/
+    newCookie.amount += 1;
+    setParsedCookie('currentCookie', currentCookie);
+    setCookie(currentCookie);
+    console.log(currentCookie);
+  }
+
+  function decrementQuantity(id) {
+    const currentCookie = getParsedCookie('currentCookie');
+    const newCookie = currentCookie.find((burritos) => {
+      return burritos.id === id;
+    });
+    newCookie.amount -= 1;
+    setParsedCookie('currentCookie', currentCookie);
+    setCookie(currentCookie);
+    console.log(currentCookie);
+  }
 
   // Render two different states depending on the cooking being already there
 
@@ -104,10 +124,28 @@ export default function Cart() {
                       <p>€ {burrito.price}</p>
                       <div css={buttons}>
                         <p>Quantity: </p>
-                        <button>-</button>
+                        <button
+                          onClick={() => {
+                            decrementQuantity(burrito.id);
+                          }}
+                        >
+                          -
+                        </button>
                         <p>{burrito.amount}</p>
-                        <button>+</button>
-                        <button>Delete</button>
+                        <button
+                          onClick={() => {
+                            incrementQuantity(burrito.id);
+                          }}
+                        >
+                          +
+                        </button>
+                        <button
+                          onClick={() => {
+                            deleteProductFromCookie(burrito.id);
+                          }}
+                        >
+                          Delete
+                        </button>
                       </div>
                     </div>
                   </div>
