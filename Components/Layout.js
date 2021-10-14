@@ -4,7 +4,7 @@ import Header from './Header';
 export default function Layout(props) {
   return (
     <div>
-      <Header />
+      <Header itemquantity={props.itemquantity} cartItems={props.cartItems} />
       {props.children}
       <Footer />
     </div>

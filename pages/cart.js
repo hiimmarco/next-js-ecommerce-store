@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useState } from 'react';
 import Layout from '../Components/Layout';
 import { getParsedCookie, setParsedCookie } from '../util/cookies';
 
@@ -52,7 +53,7 @@ const summary = css`
 
 // Create functional component
 
-export default function Cart() {
+export default function Cart(props) {
   const [cookie, setCookie] = useState(
     getParsedCookie('currentCookie') || '[]',
   );
@@ -108,7 +109,7 @@ export default function Cart() {
 
   if (cookie === '[]') {
     return (
-      <Layout>
+      <Layout cartItems={props.cartItems}>
         <div>Your cart is empty.</div>
       </Layout>
     );
@@ -174,7 +175,11 @@ export default function Cart() {
                 <p>
                   Total costs: <span>{totalPrice()}</span>
                 </p>
-                <button>checkout</button>
+                <Link href="/checkout">
+                  <a>
+                    <button>checkout</button>
+                  </a>
+                </Link>
               </div>
             </div>
           </Layout>

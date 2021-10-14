@@ -55,7 +55,7 @@ export default function Productdetail(props) {
    3. Update state */
 
   function addToCart() {
-    let currentCookie = getParsedCookie('currentCookie');
+    let currentCookie = cookie;
 
     // Check if cookie even exists and create one if not
 
@@ -123,7 +123,7 @@ export default function Productdetail(props) {
 
   return (
     <div>
-      <Layout>
+      <Layout cartItems={props.cartItems}>
         <Head>
           <title>{props.singleBurrito.name} - Burrito.me</title>
         </Head>

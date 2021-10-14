@@ -52,7 +52,7 @@ const headerlogo = css`
   padding-top: 6px;
 `;
 
-export default function Header() {
+export default function Header(props) {
   return (
     <div css={header}>
       <div css={headercontent}>
@@ -69,7 +69,9 @@ export default function Header() {
         </div>
         <Link href="/cart">
           <a>
-            <button css={button}>Shopping cart</button>
+            <button css={button}>
+              {props.itemquantity}Shopping cart{props.cartItems}
+            </button>
           </a>
         </Link>
       </div>

@@ -1,7 +1,21 @@
 import { css, Global } from '@emotion/react';
+import Cookies from 'js-cookie';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  async function getCookie() {
+    const getCookiesFunction = await Cookies.get('currentCookie');
+    const cookies = getCookiesFunction ? JSON.parse(getCookiesFunction) : [];
+    if (cookies.length > 0) {
+      setTotalAmount(cookies.reduce((sum, cookie) => sum + cookie.amount, 0));
+    }
+  }
+  useEffect(() => {
+    getCookie();
+  }, []);
   return (
     <>
       <Head>
@@ -28,7 +42,7 @@ function MyApp({ Component, pageProps }) {
           }
         `}
       />
-      <Component {...pageProps} />
+      <Component {...pageProps} cartItems={totalAmount} />
     </>
   );
 }

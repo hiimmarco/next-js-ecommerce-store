@@ -16,7 +16,7 @@ const wrapper = css`
 export default function Products(props) {
   return (
     <div>
-      <Layout>
+      <Layout cartItems={props.cartItems}>
         <Head>
           <title>Overview - Burrito.me</title>
         </Head>
