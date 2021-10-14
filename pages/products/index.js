@@ -41,8 +41,15 @@ export default function Products(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const { burritos } = await import('../../util/database');
+
+  const cookies = context.req.cookies.currentCookie || '[]';
+  const currentCookie = JSON.parse(cookies);
+
+  console.log(cookies);
+  console.log(currentCookie);
+
   return {
     props: {
       burritos: burritos,

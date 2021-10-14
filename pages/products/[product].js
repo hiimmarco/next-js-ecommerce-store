@@ -54,7 +54,7 @@ export default function Productdetail(props) {
    2. Create or update cookie (or remove content if something is there)
    3. Update state */
 
-  function clickHandler() {
+  function addToCart() {
     let currentCookie = getParsedCookie('currentCookie');
 
     // Check if cookie even exists and create one if not
@@ -79,22 +79,22 @@ export default function Productdetail(props) {
       const isBurritoInCart = currentCookie.some((burritos) => {
         return Number(burritos.id) === Number(props.singleBurrito.id);
       });
-      console.log(isBurritoInCart);
-      // If the product is there, remove it first and add it again with new amount
-      let newCookie;
 
+      // If the product is there, remove it first and add it again with new amount
+
+      let newCookie;
       if (isBurritoInCart) {
         // Remove the product
-        console.log('This if runs.');
+
         newCookie = currentCookie.filter((burritos) => {
           return Number(burritos.id) !== Number(props.singleBurrito.id);
         });
         // Add the product again with new amount
+
         newCookie = [
           ...newCookie,
           {
             name: props.singleBurrito.name,
-            desc: props.singleBurrito.desc,
             price: props.singleBurrito.price,
             id: props.singleBurrito.id,
             img: props.singleBurrito.img,
@@ -106,7 +106,6 @@ export default function Productdetail(props) {
           ...currentCookie,
           {
             name: props.singleBurrito.name,
-            desc: props.singleBurrito.desc,
             price: props.singleBurrito.price,
             id: props.singleBurrito.id,
             img: props.singleBurrito.img,
@@ -145,7 +144,13 @@ export default function Productdetail(props) {
             <button onClick={removeCountHandler}>-</button>
             <p>{quantity}</p>
             <button onClick={addCountHandler}>+</button>
-            <button onClick={clickHandler}>Add to cart</button>
+            <button
+              onClick={() => {
+                addToCart();
+              }}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </Layout>
