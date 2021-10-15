@@ -60,17 +60,11 @@ export default function Header() {
   async function getCookie() {
     const getCookiesFunction = await Cookies.get('currentCookie');
     const cookies = getCookiesFunction ? JSON.parse(getCookiesFunction) : [];
-    if (cookies.length > 0) {
-      setTotalAmount(cookies.reduce((sum, cookie) => sum + cookie.amount, 0));
-    }
+    setTotalAmount(cookies.reduce((sum, cookie) => sum + cookie.amount, 0));
   }
   getCookie();
-  /* useEffect(() => {
-    getCookie();
-  }, []); */
-
   console.log('this is header');
-
+  console.log(totalAmount);
   return (
     <div css={header}>
       <div css={headercontent}>

@@ -1,8 +1,9 @@
 import { css } from '@emotion/react';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../Components/Layout';
+import { getParsedCookie, setParsedCookie } from '../util/cookies';
 
 // Add styles to component
 
@@ -19,8 +20,11 @@ const maincontent = css`
 `;
 
 export default function Thankyou() {
+  const [cookie, setCookie] = useState(getParsedCookie('currentCookie'));
+
   useEffect(() => {
-    Cookies.remove('currentCookie');
+    setParsedCookie('currentCookie', []);
+    setCookie([]);
   }, []);
 
   return (
