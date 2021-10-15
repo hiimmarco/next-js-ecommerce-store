@@ -40,7 +40,7 @@ const button = css`
   }
 `;
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div>
       <Head>
@@ -53,7 +53,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Layout>
+        <Layout cartItems={props.cartItems}>
           <div css={herocomponent}>
             <h1>Welcome to Burrito.me</h1>
 

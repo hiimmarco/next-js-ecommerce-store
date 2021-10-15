@@ -1,6 +1,8 @@
 import { css } from '@emotion/react';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import Headerlogo from '../public/images/logo.png';
 
 const header = css`
@@ -53,6 +55,16 @@ const headerlogo = css`
 `;
 
 export default function Header() {
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  async function getCookie() {
+    const getCookiesFunction = await Cookies.get('currentCookie');
+    const cookies = getCookiesFunction ? JSON.parse(getCookiesFunction) : [];
+    setTotalAmount(cookies.reduce((sum, cookie) => sum + cookie.amount, 0));
+  }
+  getCookie();
+  console.log('this is header');
+  console.log(totalAmount);
   return (
     <div css={header}>
       <div css={headercontent}>
@@ -69,7 +81,7 @@ export default function Header() {
         </div>
         <Link href="/cart">
           <a>
-            <button css={button}>Shopping cart</button>
+            <button css={button}>Items: {totalAmount}</button>
           </a>
         </Link>
       </div>
