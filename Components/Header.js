@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import Headerlogo from '../public/images/logo.png';
 
 const header = css`
@@ -53,6 +54,8 @@ const headerlogo = css`
 `;
 
 export default function Header(props) {
+  const [cartItems, setCartItems] = useState(props.cartItems);
+  console.log('this is header');
   return (
     <div css={header}>
       <div css={headercontent}>
@@ -69,9 +72,7 @@ export default function Header(props) {
         </div>
         <Link href="/cart">
           <a>
-            <button css={button}>
-              {props.itemquantity}Shopping cart{props.cartItems}
-            </button>
+            <button css={button}>Items: {props.cartItems}</button>
           </a>
         </Link>
       </div>

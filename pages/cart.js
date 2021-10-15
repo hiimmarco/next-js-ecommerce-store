@@ -51,6 +51,12 @@ const summary = css`
   padding-left: 20px;
 `;
 
+const wrapper = css`
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+`;
+
 // Create functional component
 
 export default function Cart(props) {
@@ -125,61 +131,63 @@ export default function Cart(props) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main css={main}>
-          <Layout>
+          <Layout cartItems={props.cartItems}>
             <h1>Shopping cart</h1>
-            <div css={maincontent}>
-              {cookie.map((burrito) => {
-                return (
-                  <div key={burrito.id} css={productcard}>
-                    <img src={burrito.img} alt="Burrito" css={image} />
-                    <div css={innercard}>
-                      <h3>{burrito.name}</h3>
-                      <p>€ {burrito.price}</p>
-                      <div css={buttons}>
-                        <p>Quantity: </p>
-                        <button
-                          onClick={() => {
-                            decrementQuantity(burrito.id);
-                          }}
-                        >
-                          -
-                        </button>
-                        <p>{burrito.amount}</p>
-                        <button
-                          onClick={() => {
-                            incrementQuantity(burrito.id);
-                          }}
-                        >
-                          +
-                        </button>
-                        <button
-                          onClick={() => {
-                            deleteProductFromCookie(burrito.id);
-                          }}
-                        >
-                          Delete
-                        </button>
+            <div css={wrapper}>
+              <div css={maincontent}>
+                {cookie.map((burrito) => {
+                  return (
+                    <div key={burrito.id} css={productcard}>
+                      <img src={burrito.img} alt="Burrito" css={image} />
+                      <div css={innercard}>
+                        <h3>{burrito.name}</h3>
+                        <p>€ {burrito.price}</p>
+                        <div css={buttons}>
+                          <p>Quantity: </p>
+                          <button
+                            onClick={() => {
+                              decrementQuantity(burrito.id);
+                            }}
+                          >
+                            -
+                          </button>
+                          <p>{burrito.amount}</p>
+                          <button
+                            onClick={() => {
+                              incrementQuantity(burrito.id);
+                            }}
+                          >
+                            +
+                          </button>
+                          <button
+                            onClick={() => {
+                              deleteProductFromCookie(burrito.id);
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-              <div css={summary}>
-                <h2>Order summary</h2>
-                <p>
-                  Burritos: <span>{totalBurritoPrice(cookie)}</span>
-                </p>
-                <p>
-                  Shipping: <sp>8€</sp>
-                </p>
-                <p>
-                  Total costs: <span>{totalPrice()}</span>
-                </p>
-                <Link href="/checkout">
-                  <a>
-                    <button>checkout</button>
-                  </a>
-                </Link>
+                  );
+                })}
+                <div css={summary}>
+                  <h2>Order summary</h2>
+                  <p>
+                    Burritos: <span>{totalBurritoPrice(cookie)}</span>
+                  </p>
+                  <p>
+                    Shipping: <sp>8€</sp>
+                  </p>
+                  <p>
+                    Total costs: <span>{totalPrice()}</span>
+                  </p>
+                  <Link href="/checkout">
+                    <a>
+                      <button>checkout</button>
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
           </Layout>

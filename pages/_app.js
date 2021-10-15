@@ -16,6 +16,9 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     getCookie();
   }, []);
+
+  console.log('This is appjs');
+
   return (
     <>
       <Head>
