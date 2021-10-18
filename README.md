@@ -1,34 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Next.js Example - Sep 2021
+Next.js
+Postgres.js
+Jest
+Cypress.io
+GitHub Actions
+Database Setup
+Copy the .env.example file to a new file called .env (ignored from Git) and fill in the necessary information.
 
-## Getting Started
+Follow the instructions from the PostgreSQL step in UpLeveled's System Setup Instructions.
 
-First, run the development server:
+Then, connect to the built-in postgres database as administrator in order to create the database:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Windows
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If it asks for a password, use postgres.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+psql -U postgres
+macOS
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+psql postgres
+Linux
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+sudo -u postgres psql
+Once you have connected, run the following to create the database:
 
-## Learn More
+CREATE DATABASE <database name>;
+CREATE USER <user name> WITH ENCRYPTED PASSWORD '<user password>';
+GRANT ALL PRIVILEGES ON DATABASE <database name> TO <user name>;
+Quit psql using the following command:
 
-To learn more about Next.js, take a look at the following resources:
+\q
+On Linux, you will also need to create a Linux system user with a name matching the user name you used in the database. It will prompt you to create a password for the user - choose the same password as for the database above.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+sudo adduser <user name>
+Once you're ready to use the new user, reconnect using the following command.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Windows and macOS:
 
-## Deploy on Vercel
+psql -U <user name> <database name>
+Linux:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+sudo -u <user name> psql -U <user name> <database name>
+Running the migrations
+To set up the structure and the content of the database, run the migrations using Ley:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+yarn migrate up
+To reverse the last single migration, run:
+
+yarn migrate down
+API Design
+Base URL (development): http://localhost:3000/api
+
+Reading all users: GET /users
+Reading a single user: GET /users/:id
+Creating a new user: POST /users
+Deleting a user: DELETE /users/:id
+Updating a user: PUT /users/:id
