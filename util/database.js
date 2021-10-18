@@ -1,3 +1,14 @@
+import dotenvSafe from 'dotenv-safe';
+import postgres from 'postgres';
+
+// Read in the .env environment variables in the file to connect to posstgres
+
+dotenvSafe.config();
+
+// Connect to postgres
+
+const sql = postgres();
+
 export const burritos = [
   {
     id: '1',
